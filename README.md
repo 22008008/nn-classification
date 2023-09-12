@@ -152,14 +152,14 @@ ai_brain.fit(x=X_train_scaled,y=y_train,
              validation_data=(X_test_scaled,y_test),
              )
 ~~~
-###Ploting the metrics
+Ploting the metrics
 ~~~
 metrics = pd.DataFrame(ai_brain.history.history)
 metrics.head()
 metrics[['accuracy','val_accuracy']].plot()
 metrics[['loss','val_loss']].plot()
 ~~~
-###Making the prediction
+Making the prediction
 ~~~
 x_test_predictions = np.argmax(ai_brain.predict(X_test_scaled), axis=1)
 x_test_predictions.shape
@@ -168,7 +168,7 @@ y_test_truevalue.shape
 print(confusion_matrix(y_test_truevalue,x_test_predictions))
 print(classification_report(y_test_truevalue,x_test_predictions)
 ~~~
-###Saving and loading the model
+Saving and loading the model
 ~~~
 ai_brain.save('customer_classification_model.h5')
 with open('customer_data.pickle', 'wb') as fh:
@@ -177,26 +177,26 @@ ai_brain = load_model('customer_classification_model.h5')
 with open('customer_data.pickle', 'rb') as fh:
    [X_train_scaled,y_train,X_test_scaled,y_test,customers_1,customer_df_cleaned,scaler_age,enc,one_hot_enc,le]=pickle.load(fh)
    ~~~
-###Making the prediction for single input
+Making the prediction for single input
 ~~~
 x_single_prediction = np.argmax(ai_brain.predict(X_test_scaled[1:2,:]), axis=1)
 print(x_single_prediction)
 print(le.inverse_transform(x_single_prediction))
 ~~~
-###Dataset Information
+Dataset Information
 
 ![image](https://github.com/22008008/nn-classification/assets/118343520/52fcce30-1df8-4809-9f58-ff58c2ab1f0a)
-###OUTPUT
-###Training Loss, Validation Loss Vs Iteration Plot
+OUTPUT
+raining Loss, Validation Loss Vs Iteration Plot
 
 ![image](https://github.com/22008008/nn-classification/assets/118343520/63f626b4-25cc-469e-ad6b-7771e60dbbdd)
-###Classification Report
+Classification Report
 
 ![image](https://github.com/22008008/nn-classification/assets/118343520/cbd4f095-27dd-4592-8659-47b21fd93d15)
-###Confusion Matrix
+Confusion Matrix
 
 ![image](https://github.com/22008008/nn-classification/assets/118343520/350471be-f184-438a-9395-1b403a81b331)
 
 
-## RESULT
+RESULT
 Therefore a Neural network classification model is developed and executed successfully.
