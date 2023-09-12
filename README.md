@@ -184,7 +184,7 @@ print(x_single_prediction)
 print(le.inverse_transform(x_single_prediction))
 ```
 Dataset Information
-
+```
 ![image](https://github.com/22008008/nn-classification/assets/118343520/52fcce30-1df8-4809-9f58-ff58c2ab1f0a)
 OUTPUT
 raining Loss, Validation Loss Vs Iteration Plot
@@ -197,6 +197,6 @@ Confusion Matrix
 
 ![image](https://github.com/22008008/nn-classification/assets/118343520/350471be-f184-438a-9395-1b403a81b331)
 
-
+```
 RESULT
 Therefore a Neural network classification model is developed and executed successfully.
