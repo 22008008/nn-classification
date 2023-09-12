@@ -46,7 +46,7 @@ register no.:212222220049
 
 
 ###Importing the require packages
-~~~
+```
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from tensorflow.keras.models import Sequential
@@ -66,14 +66,14 @@ from sklearn.metrics import classification_report,confusion_matrix
 import numpy as np
 import matplotlib.pylab as plt
 import sklearn.metrics as metrics
-~~
+```
 
 
 ###Importing the dataset
 customer_df = pd.read_csv('customers.csv')
 
 ###Data exploration
-~~~
+```
 customer_df.columns
 customer_df.dtypes
 customer_df.shape
@@ -87,7 +87,7 @@ customer_df_cleaned['Profession'].unique()
 customer_df_cleaned['Spending_Score'].unique()
 customer_df_cleaned['Var_1'].unique()
 customer_df_cleaned['Segmentation'].unique()
-## Encoding of input values
+ Encoding of input values
 gories_list=[['Male', 'Female'],
            ['No', 'Yes'],
            ['No', 'Yes'],
@@ -105,12 +105,12 @@ customers_1[['Gender',
                                                                  'Ever_Married',
                                                                  'Graduated','Profession',
                                                                  'Spending_Score']])
-~~~
+```
 
 
 
 Encoding of output values
-~~~
+```
 le = LabelEncoder()
 customers_1['Segmentation'] = le.fit_transform(customers_1['Segmentation'])
 customers_1 = customers_1.drop('ID',axis=1)
@@ -121,16 +121,16 @@ y1 = customers_1[['Segmentation']].values
 one_hot_enc = OneHotEncoder()
 one_hot_enc.fit(y1)
 y = one_hot_enc.transform(y1).toarray()
-~~~
-###Spliting the data
-~~~
+```
+Spliting the data
+```
 X_train,X_test,y_train,y_test=train_test_split(X,y,
                                                test_size=0.33,
                                                random_state=50)
 X_train.shape
-~~~
-###Scaling the features of input
-~~~
+```
+Scaling the features of input
+```
 scaler_age = MinMaxScaler()
 scaler_age.fit(X_train[:,2].reshape(-1,1))
 X_train_scaled = np.copy(X_train)
@@ -151,25 +151,25 @@ ai_brain.fit(x=X_train_scaled,y=y_train,
              epochs=2000,batch_size=256,
              validation_data=(X_test_scaled,y_test),
              )
-~~~
+```
 Ploting the metrics
-~~~
+```
 metrics = pd.DataFrame(ai_brain.history.history)
 metrics.head()
 metrics[['accuracy','val_accuracy']].plot()
 metrics[['loss','val_loss']].plot()
-~~~
+```
 Making the prediction
-~~~
+```
 x_test_predictions = np.argmax(ai_brain.predict(X_test_scaled), axis=1)
 x_test_predictions.shape
 y_test_truevalue = np.argmax(y_test,axis=1)
 y_test_truevalue.shape
 print(confusion_matrix(y_test_truevalue,x_test_predictions))
 print(classification_report(y_test_truevalue,x_test_predictions)
-~~~
+```
 Saving and loading the model
-~~~
+```
 ai_brain.save('customer_classification_model.h5')
 with open('customer_data.pickle', 'wb') as fh:
    pickle.dump([X_train_scaled,y_train,X_test_scaled,y_test,customers_1,customer_df_cleaned,scaler_age,enc,one_hot_enc,le], fh)
@@ -178,11 +178,11 @@ with open('customer_data.pickle', 'rb') as fh:
    [X_train_scaled,y_train,X_test_scaled,y_test,customers_1,customer_df_cleaned,scaler_age,enc,one_hot_enc,le]=pickle.load(fh)
    ~~~
 Making the prediction for single input
-~~~
+```
 x_single_prediction = np.argmax(ai_brain.predict(X_test_scaled[1:2,:]), axis=1)
 print(x_single_prediction)
 print(le.inverse_transform(x_single_prediction))
-~~~
+```
 Dataset Information
 
 ![image](https://github.com/22008008/nn-classification/assets/118343520/52fcce30-1df8-4809-9f58-ff58c2ab1f0a)
