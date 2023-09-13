@@ -25,7 +25,7 @@ Import the required packages
 Import the dataset to manipulate on
 ### STEP 3:
 Clean the dataset and split to training and testing data
-###STEP 4:
+### STEP 4:
 Create the Model and pass appropriate layer values according the input and output data
 
 ### STEP 5:
