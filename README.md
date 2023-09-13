@@ -72,7 +72,9 @@ import sklearn.metrics as metrics
 
 
 ### Importing the dataset
+```
 customer_df = pd.read_csv('customers.csv')
+```
 
 ### Data exploration
 ```
