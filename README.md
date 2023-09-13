@@ -203,9 +203,6 @@ print(le.inverse_transform(x_single_prediction))
 
 ### OUTPUT:
 
-![228910228-057cf2d4-5f06-4c7a-85d1-fbb78889ae8f](https://github.com/22008008/nn-classification/assets/118343520/d6e584e1-b9d6-4c64-8697-4cc47ade8bf8)
-
-
 ### Raining Loss, Validation Loss Vs Iteration Plot:
 
 ![228910228-057cf2d4-5f06-4c7a-85d1-fbb78889ae8f](https://github.com/22008008/nn-classification/assets/118343520/32a1440b-1df0-424e-aff4-394ea694206f)
