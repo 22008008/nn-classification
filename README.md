@@ -1,10 +1,10 @@
 # Developing a Neural Network Classification Model
 
-## AIM
+### AIM:
 
 To develop a neural network classification model for the given dataset.
 
-## Problem Statement
+### Problem Statement:
 
 An automobile company has plans to enter new markets with their existing products. After intensive market research, they’ve decided that the behavior of the new market is similar to their existing market.
 
@@ -12,11 +12,11 @@ In their existing market, the sales team has classified all customers into 4 seg
 
 You are required to help the manager to predict the right group of the new customers.
 
-## Neural Network Model
+### Neural Network Model:
 
 Include the neural network model diagram.
 
-## DESIGN STEPS
+### DESIGN STEPS:
 
 ### STEP 1:
 Import the required packages
@@ -37,7 +37,7 @@ Load the dataset into the model
 ### STEP 7:
 Test the model by predicting and output
 
-## PROGRAM
+### PROGRAM:
 
 Developed by:Sri Ranjani Priya .P
 register no.:212222220049
@@ -45,7 +45,7 @@ register no.:212222220049
 
 
 
-###Importing the require packages
+### Importing the require packages:
 ```
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -109,7 +109,7 @@ customers_1[['Gender',
 
 
 
-## Encoding of output values
+### Encoding of output values:
 ```
 le = LabelEncoder()
 customers_1['Segmentation'] = le.fit_transform(customers_1['Segmentation'])
@@ -122,14 +122,14 @@ one_hot_enc = OneHotEncoder()
 one_hot_enc.fit(y1)
 y = one_hot_enc.transform(y1).toarray()
 ```
-## Spliting the data
+### Spliting the data:
 ```
 X_train,X_test,y_train,y_test=train_test_split(X,y,
                                                test_size=0.33,
                                                random_state=50)
 X_train.shape
 ```
-## Scaling the features of input
+### Scaling the features of input:
 ```
 scaler_age = MinMaxScaler()
 scaler_age.fit(X_train[:,2].reshape(-1,1))
@@ -152,14 +152,14 @@ ai_brain.fit(x=X_train_scaled,y=y_train,
              validation_data=(X_test_scaled,y_test),
              )
 ```
-## Ploting the metrics
+### Ploting the metrics:
 ```
 metrics = pd.DataFrame(ai_brain.history.history)
 metrics.head()
 metrics[['accuracy','val_accuracy']].plot()
 metrics[['loss','val_loss']].plot()
 ```
-## Making the prediction
+### Making the prediction:
 ```
 x_test_predictions = np.argmax(ai_brain.predict(X_test_scaled), axis=1)
 x_test_predictions.shape
@@ -168,7 +168,7 @@ y_test_truevalue.shape
 print(confusion_matrix(y_test_truevalue,x_test_predictions))
 print(classification_report(y_test_truevalue,x_test_predictions)
 ```
-## Saving and loading the model
+### Saving and loading the model:
 ```
 ai_brain.save('customer_classification_model.h5')
 with open('customer_data.pickle', 'wb') as fh:
@@ -177,16 +177,18 @@ ai_brain = load_model('customer_classification_model.h5')
 with open('customer_data.pickle', 'rb') as fh:
    [X_train_scaled,y_train,X_test_scaled,y_test,customers_1,customer_df_cleaned,scaler_age,enc,one_hot_enc,le]=pickle.load(fh)
    ```
-### Making the prediction for single input
+### Making the prediction for single input:
 ```
 x_single_prediction = np.argmax(ai_brain.predict(X_test_scaled[1:2,:]), axis=1)
 print(x_single_prediction)
 print(le.inverse_transform(x_single_prediction))
 ```
-### Dataset Information
+### Dataset Information:
 
 ![image](https://github.com/22008008/nn-classification/assets/118343520/52fcce30-1df8-4809-9f58-ff58c2ab1f0a)
+
 ### OUTPUT:
+
 ### Raining Loss, Validation Loss Vs Iteration Plot:
 
 ![image](https://github.com/22008008/nn-classification/assets/118343520/63f626b4-25cc-469e-ad6b-7771e60dbbdd)
