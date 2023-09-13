@@ -192,6 +192,7 @@ print(le.inverse_transform(x_single_prediction))
 ### Raining Loss, Validation Loss Vs Iteration Plot:
 
 ![image](https://github.com/22008008/nn-classification/assets/118343520/63f626b4-25cc-469e-ad6b-7771e60dbbdd)
+
 ### Classification Report:
 
 ![image](https://github.com/22008008/nn-classification/assets/118343520/cbd4f095-27dd-4592-8659-47b21fd93d15)
@@ -202,4 +203,6 @@ print(le.inverse_transform(x_single_prediction))
 
 
 ### RESULT:
+```
 Therefore a Neural network classification model is developed and executed successfully.
+```
